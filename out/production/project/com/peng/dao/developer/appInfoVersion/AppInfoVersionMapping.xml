@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.dao.developer.appInfoVersion.AppInfoVersionMapping">
+    <select id="findAppVersion" resultMap="APPVersion">
+        select i.softwareName,v.* from app_info as i,app_version as v
+        where i.id = #{id} and (i.id = v.appId)
+    </select>
+
+
+    <insert id="addAppVersionInfo" >
+        INSERT  INTO
+        `app_version`(`id`,`appId`,`versionNo`,`versionInfo`,`publishStatus`,`downloadLink`,`versionSize`,`createdBy`,`creationDate`,`modifyBy`,`modifyDate`,`apkLocPath`,`apkFileName`) VALUES (default,#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{downloadLink},#{versionSize},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{apkLocPath},#{apkFileName});
+    </insert>
+</mapper>
